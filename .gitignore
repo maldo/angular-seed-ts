@@ -1,0 +1,7 @@
+.git/
+bower_components/*
+build/*
+coverage/*
+node_modules/*
+
+test-results.xml

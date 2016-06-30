@@ -1,0 +1,26 @@
+// panel-spinner
+.panel-spinner {
+	display: none;
+	height: 0;
+	width: 0;
+	position: fixed;
+	z-index: 1040;
+	right: 0px;
+	top: 0px;
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(255, 255, 255, 0);
+	padding-top: 15.625em;
+	text-align: center;
+	-webkit-transition: background-color .15s linear;
+	transition: background-color .15s linear;
+	svg {
+		fill: rgba(255, 255, 255, 1);
+	}
+	.loading & {
+		display: block;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: rgba(255, 255, 255, 1);
+	}
+}

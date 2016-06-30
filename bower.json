@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "soocss": "https://nexus.scytl.net/content/repositories/releases/com/scytl/frontend/html/soocss/2.0.3/soocss-2.0.3.zip"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
+  }
+}
