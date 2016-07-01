@@ -1,0 +1,13 @@
+{
+  "extends": "eslint:recommended",
+  "env": {},
+  "globals": {
+      module,
+      require,
+      console,
+      angular,
+      describe,
+      it,
+      expect
+      }
+}

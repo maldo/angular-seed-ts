@@ -13,12 +13,15 @@
     "event-stream": "*",
     "gulp": "^3.9.1",
     "gulp-concat": "*",
+    "gulp-debug": "^2.1.2",
     "gulp-eslint": "*",
     "gulp-inject": "*",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-ng-html2js": "^0.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "*",
+    "gulp-tslint": "^5.0.0",
+    "gulp-typescript": "*",
     "gulp-uglify": "^1.5.4",
     "gulp-zip": "^3.2.0",
     "husky": "*",
@@ -30,7 +33,9 @@
     "karma-phantomjs-launcher": "1.0.x",
     "karma-sinon-chai": "1.2.x",
     "mversion": "*",
-    "proxy-middleware": "*"
+    "proxy-middleware": "*",
+    "tslint": "^3.13.0",
+    "typescript": "^1.8.10"
   },
   "scripts": {
     "setup": "npm install && bower install",

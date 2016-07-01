@@ -1,0 +1,10 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+      "quotemark": [true, "single", "avoid-escape"],
+      "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+      "indent": [false, "spaces"]
+  },
+  "rulesDirectory": [
+  ]
+}

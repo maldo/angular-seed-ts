@@ -15,6 +15,11 @@ var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var zip = require('gulp-zip');
 var info = require('./package.json');
+var ts = require('gulp-typescript');
+var debug = require('gulp-debug');
+var tsConfig = require("tsconfig-glob");
+var tslint = require("gulp-tslint");
+
 
 var external = [
     'node_modules/angular/angular.min.js',
@@ -28,24 +33,33 @@ gulp.task('clean', function () {
 
 gulp.task('lint', ['clean'], function () {
   var sources = [
-    'src/**/*.js',
+    'src/**/*.ts',
     'test/**/*.js'
   ];
 
   return gulp.src(sources)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+    .pipe(tslint())
+    .pipe(tslint.report('verbose', {
+        emitError: false
+      }));
 });
 
-gulp.task('scripts', ['lint'], function () {
+gulp.task('scripts', ['lint', 'tsconfig-glob'], function () {
+
+    var tsProject = ts.createProject('tsconfig.json', {sortOutput: true});
 
     var vendorStream = gulp.src(external)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('build'));
 
-    var appStream = gulp.src('src/**/*.js')
+    var TsStream = tsProject.src()
         .pipe(maps.init())
+        .pipe(ts(tsProject));
+        //.pipe(debug(ts(tsProject)));
+
+        //.pipe(concat('app.js'))
+    var appStream = TsStream
+        //.pipe(ngAnnotate())
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
@@ -78,7 +92,7 @@ gulp.task('scripts', ['lint'], function () {
       .pipe(gulp.dest('build'));
 });
 
-gulp.task('watch', ['scripts'], browserSync.reload);
+gulp.task('watch', ['tsconfig-glob', 'scripts'], browserSync.reload);
 
 gulp.task('browser-sync', ['test'], function() {
     var proxyOptions = url.parse('http://localhost:3000/secret-api');
@@ -94,9 +108,17 @@ gulp.task('browser-sync', ['test'], function() {
         }
     });
 
-    gulp.watch(['src/**/*.js',
+    gulp.watch(['src/**/*.ts',
         'src/scss/**/*.scss',
         'src/**/*.html'], ['watch']);
+});
+
+gulp.task('tsconfig-glob', function () {
+    return tsConfig({
+        configPath: '.',
+        cwd: process.cwd(),
+        indent: 2
+    });
 });
 
 gulp.task('zip', ['test'], function () {

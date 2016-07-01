@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES5"
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "typings/index.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "files": [
+    "typings/index.d.ts",
+    "./src/app/app.ts",
+    "./src/app/common/factories/jwt-interceptor.ts",
+    "./src/app/common/factories/test.ts",
+    "./src/app/common/services/session.ts",
+    "./src/app/routes.ts"
+  ]
+}

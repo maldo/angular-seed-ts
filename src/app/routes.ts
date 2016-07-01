@@ -1,4 +1,4 @@
-(function () {
+(function (angular) {
     angular.module('routes', ['ui.router'])
     .config(function ($urlRouterProvider, $stateProvider) {
         'use strict';

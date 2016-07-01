@@ -3,5 +3,7 @@ bower_components/*
 build/*
 coverage/*
 node_modules/*
+typings/*
+src/**/*.js
 
 test-results.xml

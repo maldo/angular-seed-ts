@@ -30,15 +30,22 @@ angular.module('app', [
 	 * ---------------
 	 * Contains all the directives regarding to soocss components
 	 */
-	//'ng-soocss',
+	// 'ng-soocss',
 
 	'app.service.session',
-	'app.factory.jwtInterceptor'
+	'app.factory.jwtInterceptor',
+	'app.test.tontunas'
 ])
 
 .config(function Config($httpProvider) {
   'use strict';
+  /*const casa = 'MUCHO';
 
-  //push the pwt interceptors. In each request the jwt token will be added as a header
+  console.log(casa);*/
+
+  // push the pwt interceptors. In each request the jwt token will be added as a header
   $httpProvider.interceptors.push('jwtInterceptor');
-});
+})
+.run(['testTontunas', function (testTontunas) {
+	testTontunas.test1();
+}]);
