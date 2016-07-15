@@ -34,7 +34,7 @@ gulp.task('clean', function () {
 gulp.task('lint', ['clean'], function () {
   var sources = [
     'src/**/*.ts',
-    'test/**/*.js'
+    'test/**/*.ts'
   ];
 
   return gulp.src(sources)

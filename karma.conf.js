@@ -9,26 +9,35 @@ module.exports = function(config) {
             'karma-phantomjs-launcher',
             'karma-junit-reporter',
             'karma-coverage',
-            'karma-babel-preprocessor'
+            'karma-typescript-preprocessor'
         ],
         files: [
             'build/vendor.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'build/app.js',
-            'test/**/*.js'
+            'test/**/*.ts'
         ],
     exclude: [
     ],
     preprocessors: {
-      'src/**/*.js': 'coverage',
-      'test/**/*.js': 'babel'
+      'src/**/*.ts': 'coverage',
+      'test/**/*.ts': 'typescript'
     },
-    babelPreprocessor: {
-        options: {
-            presets: ['es2015'],
-            sourceMap: 'inline'
-        }
-    },
+    typescriptPreprocessor: {
+       options: {
+           sourceMap: false,
+           target: 'ES5',
+           module: 'commonjs',
+           noImplicitAny: true,
+           noResolve: true,
+           removeComments: true,
+           concatinateOutput: false
+       },
+       typings: [ 'typings/index.d.ts' ],
+       transformPath: function (path) {
+           return path.replace(/\.ts$/, '.js');
+       }
+   },
     reporters: ['dots','junit','coverage'],
     port: 9876,
     colors: true,

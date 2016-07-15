@@ -7,3 +7,4 @@ typings/*
 src/**/*.js
 
 test-results.xml
+npm-debug.log
