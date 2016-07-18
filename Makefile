@@ -27,10 +27,12 @@ run:
 compile:
 	npm install --unsafe-perm
 	bower install --allow-root
+	typings install
 	npm run release
 release_patch:
 	npm install --unsafe-perm
 	bower install --allow-root
+	typings install
 	npm run patch
 	npm run release
 	git add bower.json package.json
@@ -41,6 +43,7 @@ release_patch:
 release_minor:
 	npm install --unsafe-perm
 	bower install --allow-root
+	typings install
 	npm run minor
 	npm run release
 	git add bower.json package.json
@@ -51,6 +54,7 @@ release_minor:
 release_major:
 	npm install --unsafe-perm
 	bower install --allow-root
+	typings install
 	npm run major
 	npm run release
 	git add bower.json package.json
@@ -61,6 +65,8 @@ release_major:
 install:
 	npm install
 	bower install
+	typings install
 clean:
 	rm -rf node_modules/
 	rm -rf bower_components/
+	rm- rf typings/

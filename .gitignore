@@ -1,10 +1,10 @@
 .git/
 bower_components/*
 build/*
+dist/*
 coverage/*
 node_modules/*
 typings/*
 src/**/*.js
 
-test-results.xml
 npm-debug.log

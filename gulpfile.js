@@ -123,7 +123,7 @@ gulp.task('tsconfig-glob', function () {
 
 gulp.task('zip', ['test'], function () {
     var filename = info.name + '-' + info.version + '.zip';
-    return gulp.src(['build/*', '!build/*.map'])
+    return gulp.src(['build/*', '!build/*.map', '!build/test-results.xml'])
         .pipe(zip(filename))
         .pipe(gulp.dest('dist'));
 });
@@ -134,5 +134,10 @@ gulp.task('test', ['scripts'], function (done) {
   }, done).start();
 });
 
+gulp.task('moveBuildTestResults', ['test'], function () {
+    return gulp.src('build/test-results.xml')
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('dev', ['scripts', 'test', 'browser-sync']);
-gulp.task('release', ['scripts', 'test', 'zip']);
+gulp.task('release', ['scripts', 'test', 'zip', 'moveBuildTestResults']);

@@ -35,16 +35,17 @@
     "mversion": "*",
     "proxy-middleware": "*",
     "tslint": "^3.13.0",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "typings": "*"
   },
   "scripts": {
-    "setup": "npm install && bower install",
+    "setup": "npm install && bower install && typings install",
     "upgrade": "npm update",
     "build": "gulp build",
     "dev": "gulp dev",
     "test": "gulp test",
-    "dist": "gulp dist",
-    "precommit": "npm run dist && git add --all",
+    "release": "gulp release",
+    "precommit": "npm run release && git add --all",
     "patch": "mversion patch -mn",
     "minor": "mversion minor -mn",
     "major": "mversion major -mn"

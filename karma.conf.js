@@ -46,7 +46,7 @@ module.exports = function(config) {
     singleRun: true,
     junitReporter: {
       outputDir: '.',
-      outputFile: 'test-results.xml',
+      outputFile: 'build/test-results.xml',
       useBrowserName: false
     },
     coverageReporter: {
